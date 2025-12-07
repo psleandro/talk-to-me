@@ -2,6 +2,7 @@ use std::{env, net::SocketAddr};
 use dotenvy::dotenv;
 use tokio::net::TcpListener;
 
+pub mod extractors;
 pub mod routes;
 pub mod handlers;
 
