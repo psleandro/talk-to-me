@@ -1,17 +1,15 @@
 use std::{env, net::SocketAddr};
-use axum::{Router, routing::get};
 use dotenvy::dotenv;
 use tokio::net::TcpListener;
 
-async fn root() -> String {
-    return String::from("Hello world!");
-}
+pub mod routes;
+pub mod handlers;
 
 #[tokio::main]
 async fn main() {
     dotenv().ok();
 
-    let app = Router::new().route("/", get(root));
+    let app = routes::app_routes();
 
     let port: u16 = env::var("PORT")
         .unwrap_or_else(|_| "8000".to_string())
